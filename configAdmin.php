@@ -528,6 +528,8 @@
                                                             <td class="text-center">
                                                                 <button type="submit" class="btn btn-sm btn-primary button-UPPE" value="res-update-pedido-'.$upp.'">Actualizar</button>
                                                                 <div id="res-update-pedido-'.$upp.'" style="width: 100%; margin:0px; padding:0px;"></div>
+                                                                <br>
+                                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Detalles</button>
                                                             </td>
                                                         </tr>
                                                       </form>
@@ -544,6 +546,26 @@
                     </div>
                 </div>
             </div>
+        </div>
+                <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Pedido</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+
+        </div>
         </div>
     </section>
     <?php include './inc/footer.php'; ?>
