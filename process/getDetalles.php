@@ -2,6 +2,7 @@
     session_start();
     include '../library/configServer.php';
     include '../library/consulSQL.php';
+
     $granTotal = 0;
     $pedido=$_REQUEST['idPedido'];
     $usuario=($_REQUEST['usuario']);
@@ -19,9 +20,9 @@
                 echo "<div class='text-right'  ><h5>Status : ".$encabezado['Estado']."</h5></div>";
                 echo "</div>";
             echo"</div>";
-            
+             
             echo "<div class='modal-body'>";
-
+ 
             echo "<div class='panel-body'>";
             echo "<table class='table borderless'>";
             echo "<thead>";
@@ -33,7 +34,7 @@
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
-            
+             
         }
         while($detalle = mysql_fetch_array($verDetalle)){
             echo "<tr>";
@@ -50,7 +51,7 @@
             echo "<td class='text-center'>".$detalle['CantidadProductos']."</td>";
             $granTotal = $granTotal + ($detalle['Precio'] * $detalle['CantidadProductos']);
             echo "<td class='text-right'>$ ".$detalle['Precio'] * $detalle['CantidadProductos'] ."</td>";
-            echo "</tr>";
+            echo "</tr>"; 
         }
           
         echo "</tbody>";
@@ -58,14 +59,14 @@
         echo "<div class='text-right'><h5>Total: ".$granTotal."</h5></div>";
         echo "</div>";
         echo "</div>";
-
+ 
         echo "</div>";
-
+ 
         echo "<div class='modal-footer'>";
         echo "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
         echo "</div>";
         echo "</div>";
-        
+         
     }else{
         echo '<img src="assets/img/error.png" class="center-all-contens"><br>Error campo vacío<br>Intente nuevamente';
     }
