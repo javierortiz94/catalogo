@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+
+
     /*Envio del formulario con Ajax para eliminar producto*/
     $('#del-prod-form form').submit(function(e) {
          e.preventDefault();
@@ -287,7 +290,7 @@ $(document).ready(function() {
         return false;
     });
 
-
 });
+
 
 

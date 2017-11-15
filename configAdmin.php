@@ -9,6 +9,27 @@
     <title>Admin</title>
     <?php include './inc/link.php'; ?>
     <script type="text/javascript" src="js/admin.js"></script>
+    <script>
+    function getDetalles(id,NIT){
+        alert(id);
+        alert(NIT);
+        var http = new XMLHttpRequest();
+        var url = "process/getDetalles.php";
+        var params = "idPedido="+id+"&usuario="+NIT;
+        http.open("POST", url, true);
+        
+        //Send the proper header information along with the request
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                alert(http.responseText);
+                document.getElementById('modalTest').innerHTML=http.responseText;
+            }
+        }
+        http.send(params);
+    }
+    </script>
 </head>
 <body id="container-page-configAdmin">
     <?php include './inc/navbar.php'; ?>
@@ -529,7 +550,7 @@
                                                                 <button type="submit" class="btn btn-sm btn-primary button-UPPE" value="res-update-pedido-'.$upp.'">Actualizar</button>
                                                                 <div id="res-update-pedido-'.$upp.'" style="width: 100%; margin:0px; padding:0px;"></div>
                                                                 <br>
-                                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Detalles</button>
+                                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalDetalles" onclick="getDetalles('.$peU['NumPedido'].','.$peU['NIT'].')">Detalles</button>
                                                             </td>
                                                         </tr>
                                                       </form>
@@ -548,23 +569,9 @@
             </div>
         </div>
                 <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Pedido</h4>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-
+        <div id="modalDetalles" class="modal fade" role="dialog">
+        <div class="modal-dialog  modal-lg" id="modalTest">
+ 
         </div>
         </div>
     </section>
