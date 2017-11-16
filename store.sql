@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2017 a las 17:12:06
+-- Tiempo de generación: 16-11-2017 a las 16:37:56
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -81,6 +81,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`NIT`, `Nombre`, `NombreCompleto`, `Apellido`, `Clave`, `Direccion`, `Telefono`, `Email`) VALUES
+('1', 'Isaac', 'iSAAC', 'Hernandez', '123', 'djh', 231, 'sdhlsdflk'),
+('3423', 'isaac', 'Isaac', 'Hernandez', '3ee956439809ab4c53d0b7f44eb802ba', 'jskdfj@dj.com', 2147483647, 'ksadjl@sdjfk.com'),
 ('4766-8402-7914-2595', 'Alejandro', 'Javier Alejandro', 'Ortiz Soria', '80e60ba65a4a9fe5c994bae8983783ab', 'CeDis Ags', 2147483647, 'javier.ortiz@vianney.mx'),
 ('4962-1502-5034-3024', 'Javier', 'Javier Alejandro', 'Ortiz Soria', 'f57cde1b2cfef903da4d83d6ae48a413', 'cobertores', 2147483647, 'javier.ortiz@vianney.mx');
 
@@ -95,6 +97,14 @@ CREATE TABLE `detalle` (
   `CodigoProd` varchar(30) NOT NULL,
   `CantidadProductos` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle`
+--
+
+INSERT INTO `detalle` (`NumPedido`, `CodigoProd`, `CantidadProductos`) VALUES
+(4, '002', 1),
+(4, '2232', 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +130,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`CodigoProd`, `NombreProd`, `CodigoCat`, `Precio`, `Modelo`, `Marca`, `Stock`, `NITProveedor`, `Imagen`, `Nombre`) VALUES
-('MDC 002', 'MDC 001 SÁBANAS 002', 'M1', '50.00', '002', 'MDC', 20, '14178', 'MDC 001 SABANAS 001.jpg', 'admin');
+('002', 'MDC 001 SABANAS 002', 'M1', '50.00', '002', 'MDC', 18, '14178', 'MDC 001 SABANAS 001.jpg', 'admin'),
+('2232', 'Prueba', 'M1', '223.00', 'Verde', 'Vianney', 20, '14178', '1.PNG', 'admin');
 
 -- --------------------------------------------------------
 
@@ -157,6 +168,13 @@ CREATE TABLE `venta` (
   `TotalPagar` decimal(30,2) NOT NULL,
   `Estado` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`NumPedido`, `Fecha`, `NIT`, `Descuento`, `TotalPagar`, `Estado`) VALUES
+(4, '13-11-2017', '3423', 0, '273.00', 'Pendiente');
 
 --
 -- Índices para tablas volcadas
@@ -218,7 +236,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `NumPedido` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `NumPedido` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
