@@ -11,8 +11,7 @@
     <script type="text/javascript" src="js/admin.js"></script>
     <script>
     function getDetalles(id,NIT){
-        alert(id);
-        alert(NIT);
+ 
         var http = new XMLHttpRequest();
         var url = "process/getDetalles.php";
         var params = "idPedido="+id+"&usuario="+NIT;
@@ -23,7 +22,7 @@
         
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
-                alert(http.responseText);
+                 
                 document.getElementById('modalTest').innerHTML=http.responseText;
             }
         }
